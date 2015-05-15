@@ -1,7 +1,9 @@
-var Carousel = function(el, option) {
-    Observer.call(this);
+var Carousel = function(id, option) {
+    this.initialize_(id, option);
+};
+
+Carousel.prototype.initialize_ = function() {
 
 };
 
-assign(Carousel.prototype,
-    Observer.prototype);
+assign(Carousel.prototype, Observer, Model);

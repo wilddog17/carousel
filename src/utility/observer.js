@@ -1,8 +1,5 @@
-var Observer = function() {
-    this.listeners_ = {};
-};
-
-Observer.prototype = {
+var Observer = {
+    listeners_: {},
     on: function(event, listener) {
         if(!this.listeners_[event]) {
             this.listeners_[event] = [];
