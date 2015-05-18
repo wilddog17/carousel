@@ -22,8 +22,17 @@ var DOM = {
         DOMElement.innerHTML = html;
     },
 
-    mount: function() {
+    createImage: function() {
+        var boundary = this.getElementBoundary_();
+        var internal = this.createChildrenImages();
+        return boundary.open +
+            internal.join(STRING.EMPTY) +
+            boundary.close;
+    },
 
+    mountImage: function() {
+        var image = this.createImage();
+        this.setInnerHTML(image);
     },
 
     getElementBoundary_: function() {

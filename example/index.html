@@ -11,13 +11,17 @@
     <script src="../src/utility/observer.js"></script>
     <script src="../src/utility/useragent.js"></script>
     <script src="../src/dom/element.js"></script>
+    <script src="../src/dom/dom.js"></script>
+    <script src="../src/dom/domchildren.js"></script>
     <script src="../src/model/model.js"></script>
+    <script src="../src/render/raf.js"></script>
+    <script src="../src/render/transition.js"></script>
+    <script src="../src/render/renderer.js"></script>
+    <script src="../src/container.js"></script>
     <script src="../src/carousel.js"></script>
-
-
 </head>
 <body>
-    <div id="test"></div>
+    <div id="test" class="test"></div>
     <script>
         var carousel = new Carousel('test', {});
         carousel.setData([1, 2, 3, 4, 5]);
