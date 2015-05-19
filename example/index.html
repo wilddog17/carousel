@@ -13,6 +13,7 @@
     <script src="../src/utility/uniquekey.js"></script>
 
     <script src="../src/core/gesture.js"></script>
+    <script src="../src/core/gesturesession.js"></script>
 
     <script src="../src/dom/element.js"></script>
     <script src="../src/dom/dom.js"></script>
@@ -33,6 +34,16 @@
     <script>
         var carousel = new Carousel('test', {});
         carousel.setData([1, 2, 3, 4, 5]);
+
+        carousel.on('gesture:start', function(session) {
+            console.log('gesture:start', session);
+        });
+        carousel.on('gesture:move', function(session) {
+            console.log('gesture:move', session);
+        });
+        carousel.on('gesture:end', function(session) {
+            console.log('gesture:end', session);
+        });
     </script>
 </body>
 </html>

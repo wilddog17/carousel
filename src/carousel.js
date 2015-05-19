@@ -12,4 +12,11 @@ Carousel.prototype = {
     }
 };
 
-assign(Carousel.prototype, Observer, Model, Gesture);
+assign(Carousel.prototype,
+    Observer, Model, Gesture, GestureSession);
+
+Carousel.SESSION_TYPE = SESSION_TYPE;
+Carousel.DIRECTION = DIRECTION;
+Carousel.EVENT_TOUCH = EVENT_TOUCH;
+Carousel.EVENT_MOUSE = EVENT_MOUSE;
+Carousel.EVENT_POINTER = EVENT_POINTER;
