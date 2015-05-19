@@ -27,11 +27,21 @@ var GestureSession = {
             startTime: Date.now()
         };
     },
+
+    getPointerPosition_: function(event) {
+        var pointer = event.touches ? event.touches[0] : event;
+        return {
+            x: pointer.pageX || pointer.clientX,
+            y: pointer.pageY || pointer.clientY
+        };
+    },
+
     updateGestureSession: function(event) {
         this.updateSessionTarget_(event);
         this.updateSessionPosition_();
         this.updateSessionType_();
     },
+
     updateSessionTarget_: function(event) {
         this.session_.target = event || window.event;
     },
@@ -48,7 +58,6 @@ var GestureSession = {
             y: (Math.abs(deltaY) > this.threshold) ? deltaY : 0
         };
     },
-
     updateSessionType_: function() {
         var session = this.session_;
         var delta = session.delta;
@@ -62,13 +71,5 @@ var GestureSession = {
     clearGestureSession: function() {
         this.prev_ = assign({}, this.session_);
         this.session_ = null;
-    },
-
-    getPointerPosition_: function(event) {
-        var pointer = event.touches ? event.touches[0] : event;
-        return {
-            x: pointer.pageX || pointer.clientX,
-            y: pointer.pageY || pointer.clientY
-        };
     }
 };

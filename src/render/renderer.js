@@ -1,4 +1,4 @@
-var Renderer = function() {
+var Renderer = function(events, option) {
 
 };
 
