@@ -4,10 +4,14 @@ var Container = function(option) {
 
 Container.prototype = {
     initialize_: function(option) {
-        this.key_ = 0;
+        this.key_ = getUniqueKey();
+
+        for(var i=0;i<3;i+=1) {
+            this.children_.push(new Panel());
+        }
     },
     move: function(offset) {
-        this.setProperty('style')
+
     }
 };
 

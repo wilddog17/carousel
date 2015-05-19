@@ -19,6 +19,9 @@ var Model = {
     setData: function(datasource) {
         this.data_ = datasource || [];
     },
+    getData: function() {
+        return this.data_;
+    },
     getDataByIndex: function(index) {
         return this.data_[index];
     },
@@ -26,6 +29,7 @@ var Model = {
         var index = this.getIndexByOffset(offset);
         return this.getDataByIndex(index);
     },
+
     getDataLength: function() {
         return this.data_.length;
     }
