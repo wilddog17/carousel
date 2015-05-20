@@ -13,7 +13,8 @@ var EVENT_TOUCH = {
 var EVENT_MOUSE = {
     start: 'mousedown',
     move: 'mousemove',
-    end: 'mouseup'
+    end: 'mouseup',
+    cancel: 'mouseleave'
 };
 
 var Gesture = {
@@ -53,6 +54,7 @@ var Gesture = {
         if(!this.hasPointerEvent_) {
             events.on(container, EVENT_MOUSE.move, this.onmove_);
             events.on(container, EVENT_MOUSE.end, this.onend_);
+            events.on(container, EVENT_MOUSE.cancel, this.onend_);
         }
     },
     removeGestureEvent_: function() {
@@ -67,10 +69,15 @@ var Gesture = {
         if(!this.hasPointerEvent_) {
             events.off(container, EVENT_MOUSE.move, this.onmove_);
             events.off(container, EVENT_MOUSE.end, this.onend_);
+            events.off(container, EVENT_MOUSE.cancel, this.onend_);
         }
     },
 
     onStart: function(event) {
+        if(this.hasGestureSession()) {
+            return;
+        }
+
         this.createGestureSession(event);
         this.attachGestureEvent_();
 
@@ -84,6 +91,10 @@ var Gesture = {
         this.emit('gesture:move', session);
     },
     onEnd: function(event) {
+        if(!this.hasGestureSession()) {
+            return;
+        }
+
         var session = this.getGestureSession();
         this.emit('gesture:end', session);
 

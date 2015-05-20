@@ -5,11 +5,14 @@ var SESSION_TYPE = {
 };
 
 var GestureSession = {
-    prev_: {},
-    session_: {},
+    prev_: null,
+    session_: null,
 
     getGestureSession: function() {
         return this.session_;
+    },
+    hasGestureSession: function() {
+        return !!this.session_;
     },
 
     createGestureSession: function(event) {
